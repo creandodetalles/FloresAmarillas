@@ -20,10 +20,14 @@ const parametros =
 const nombreRecibido =
     parametros.get("nombre");
 
-const nombre =
+// 1. Obtenemos el nombre limpio (o "Micaela" por defecto)
+let nombreOriginal =
     nombreRecibido
         ? nombreRecibido.trim()
-        : "micaela";
+        : "Micaela";
+
+// 2. FORZAR que la primera letra sea siempre Mayúscula
+const nombre = nombreOriginal.charAt(0).toUpperCase() + nombreOriginal.slice(1);
 
 
 /*
