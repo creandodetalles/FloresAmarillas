@@ -17,65 +17,96 @@ const parametros =
         window.location.search
     );
 
+
+/* ==========================================
+   👩 OBTENER NOMBRE
+========================================== */
+
 const nombreRecibido =
     parametros.get("nombre");
 
-// 1. Obtenemos el nombre limpio (o "Micaela" por defecto)
+
 let nombreOriginal =
     nombreRecibido
         ? nombreRecibido.trim()
-        : "Micaela";
+        : "Nayeli";
 
-// 2. FORZAR que la primera letra sea siempre Mayúscula
+
+/* ==========================================
+   ✨ NORMALIZAR NOMBRE
+========================================== */
+
 const nombre =
     nombreOriginal.charAt(0).toUpperCase() +
     nombreOriginal.slice(1).toLowerCase();
 
-/*
-   El nombre aparecerá automáticamente
-   en todos los lugares preparados.
-*/
-
-const nombrePersona =
-    document.getElementById("nombrePersona");
-
-const nombreBanner =
-    document.getElementById("nombreBanner");
-
-
-if (nombrePersona) {
-    nombrePersona.textContent = nombre;
-}
-
-
-if (nombreBanner) {
-    nombreBanner.textContent = nombre;
-}
 
 /* ==========================================
-   💌 TÍTULO PERSONALIZADO DESDE EL ENLACE
+   💌 TIPO DE EXPERIENCIA
 ========================================== */
 
-const tituloRecibido =
-    parametros.get("titulo");
+const tipo =
+    parametros.get("tipo");
 
+
+/* ==========================================
+   💛 ELEMENTOS
+========================================== */
+
+const nombrePersona =
+    document.getElementById(
+        "nombrePersona"
+    );
+
+const nombreBanner =
+    document.getElementById(
+        "nombreBanner"
+    );
 
 const tituloPersonalizado =
-    tituloRecibido
-        ? tituloRecibido.trim()
-        : "Espera un momento...";
-
-
-const elementoTitulo =
     document.getElementById(
         "tituloPersonalizado"
     );
 
 
-if (elementoTitulo) {
+/* ==========================================
+   🌼 COLOCAR NOMBRE
+========================================== */
 
-    elementoTitulo.textContent =
-        tituloPersonalizado;
+if (nombrePersona) {
+
+    nombrePersona.textContent =
+        nombre;
+}
+
+
+if (nombreBanner) {
+
+    nombreBanner.textContent =
+        nombre;
+}
+
+
+/* ==========================================
+   💌 TÍTULO SEGÚN EL TIPO
+========================================== */
+
+if (tituloPersonalizado) {
+
+    if (tipo === "especial") {
+
+        tituloPersonalizado.textContent =
+            "❤️ Mi Hermosa " +
+            nombre +
+            " 🌻";
+
+    } else {
+
+        tituloPersonalizado.textContent =
+            "🌼 Para ti, " +
+            nombre;
+
+    }
 
 }
 
