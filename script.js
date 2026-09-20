@@ -9,7 +9,7 @@
 ========================================== */
 
 /* ==========================================
-   👩 NOMBRE PERSONALIZADO DESDE EL ENLACE
+   👩 PERSONALIZACIÓN DESDE EL ENLACE
 ========================================== */
 
 const parametros =
@@ -19,7 +19,7 @@ const parametros =
 
 
 /* ==========================================
-   👩 OBTENER NOMBRE
+   👩 NOMBRE
 ========================================== */
 
 const nombreRecibido =
@@ -32,10 +32,6 @@ let nombreOriginal =
         : "Nayeli";
 
 
-/* ==========================================
-   ✨ NORMALIZAR NOMBRE
-========================================== */
-
 const nombre =
     nombreOriginal.charAt(0).toUpperCase() +
     nombreOriginal.slice(1).toLowerCase();
@@ -45,12 +41,46 @@ const nombre =
    💌 TIPO DE EXPERIENCIA
 ========================================== */
 
-const tipo =
+const tipoRecibido =
     parametros.get("tipo");
 
 
+const tipo =
+    tipoRecibido
+        ? tipoRecibido.trim().toLowerCase()
+        : "normal";
+
+
 /* ==========================================
-   💛 ELEMENTOS
+   💬 FRASE PERSONALIZADA
+========================================== */
+
+const fraseRecibida =
+    parametros.get("frase");
+
+
+const frase =
+    fraseRecibida
+        ? fraseRecibida.trim()
+        : "Mi persona especial";
+
+
+/* ==========================================
+   ✍️ FIRMA PERSONALIZADA
+========================================== */
+
+const firmaRecibida =
+    parametros.get("firma");
+
+
+const firma =
+    firmaRecibida
+        ? firmaRecibida.trim()
+        : "R.A";
+
+
+/* ==========================================
+   🎯 ELEMENTOS DE LA PÁGINA
 ========================================== */
 
 const nombrePersona =
@@ -58,10 +88,12 @@ const nombrePersona =
         "nombrePersona"
     );
 
+
 const nombreBanner =
     document.getElementById(
         "nombreBanner"
     );
+
 
 const tituloPersonalizado =
     document.getElementById(
@@ -69,26 +101,38 @@ const tituloPersonalizado =
     );
 
 
+const tituloEspera =
+    document.getElementById(
+        "tituloEspera"
+    );
+
+
 /* ==========================================
-   🌼 COLOCAR NOMBRE
+   🌼 NOMBRE EN EL MENSAJE
 ========================================== */
 
 if (nombrePersona) {
 
     nombrePersona.textContent =
         nombre;
+
 }
 
+
+/* ==========================================
+   ✈️ NOMBRE EN EL CARTEL DEL AVIÓN
+========================================== */
 
 if (nombreBanner) {
 
     nombreBanner.textContent =
         nombre;
+
 }
 
 
 /* ==========================================
-   💌 TÍTULO SEGÚN EL TIPO
+   💛 TÍTULO PRINCIPAL
 ========================================== */
 
 if (tituloPersonalizado) {
@@ -107,6 +151,18 @@ if (tituloPersonalizado) {
             nombre;
 
     }
+
+}
+
+
+/* ==========================================
+   ⏳ TEXTO DE ESPERA
+========================================== */
+
+if (tituloEspera) {
+
+    tituloEspera.textContent =
+        "Espera un momento...";
 
 }
 
