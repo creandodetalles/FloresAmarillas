@@ -27,8 +27,9 @@ let nombreOriginal =
         : "Micaela";
 
 // 2. FORZAR que la primera letra sea siempre Mayúscula
-const nombre = nombreOriginal.charAt(0).toUpperCase() + nombreOriginal.slice(1);
-
+const nombre =
+    nombreOriginal.charAt(0).toUpperCase() +
+    nombreOriginal.slice(1).toLowerCase();
 
 /*
    El nombre aparecerá automáticamente
@@ -49,6 +50,33 @@ if (nombrePersona) {
 
 if (nombreBanner) {
     nombreBanner.textContent = nombre;
+}
+
+/* ==========================================
+   💌 TÍTULO PERSONALIZADO DESDE EL ENLACE
+========================================== */
+
+const tituloRecibido =
+    parametros.get("titulo");
+
+
+const tituloPersonalizado =
+    tituloRecibido
+        ? tituloRecibido.trim()
+        : "Espera un momento...";
+
+
+const elementoTitulo =
+    document.getElementById(
+        "tituloPersonalizado"
+    );
+
+
+if (elementoTitulo) {
+
+    elementoTitulo.textContent =
+        tituloPersonalizado;
+
 }
 
 
