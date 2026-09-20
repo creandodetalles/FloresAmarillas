@@ -23,7 +23,7 @@ const nombreRecibido =
 const nombre =
     nombreRecibido
         ? nombreRecibido.trim()
-        : "Nayeli";
+        : "micaela";
 
 
 /*
