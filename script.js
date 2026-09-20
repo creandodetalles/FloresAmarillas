@@ -1,0 +1,842 @@
+/* ==========================================
+   FLORES AMARILLAS 🌼
+   JAVASCRIPT — EXPERIENCIA INTERACTIVA
+========================================== */
+
+
+/* ==========================================
+   1. NOMBRE DE LA PERSONA
+========================================== */
+
+/* ==========================================
+   👩 NOMBRE PERSONALIZADO DESDE EL ENLACE
+========================================== */
+
+const parametros =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const nombreRecibido =
+    parametros.get("nombre");
+
+const nombre =
+    nombreRecibido
+        ? nombreRecibido.trim()
+        : "Nayeli";
+
+
+/*
+   El nombre aparecerá automáticamente
+   en todos los lugares preparados.
+*/
+
+const nombrePersona =
+    document.getElementById("nombrePersona");
+
+const nombreBanner =
+    document.getElementById("nombreBanner");
+
+
+if (nombrePersona) {
+    nombrePersona.textContent = nombre;
+}
+
+
+if (nombreBanner) {
+    nombreBanner.textContent = nombre;
+}
+
+
+/* ==========================================
+   2. ELEMENTOS PRINCIPALES
+========================================== */
+
+const btnComenzar = document.getElementById("btnComenzar");
+const jardin = document.getElementById("jardin");
+const mensaje = document.getElementById("mensaje");
+const btnCarta = document.getElementById("btnCarta");
+const carta = document.getElementById("carta");
+
+const musica = document.getElementById("musica");
+
+const contenedorParticulas =
+    document.querySelector(".particulas");
+
+
+/* ==========================================
+   3. COMENZAR — VUELO CINEMATOGRÁFICO ✈️
+========================================== */
+
+if (btnComenzar) {
+
+    btnComenzar.addEventListener("click", function () {
+
+        /* Evitamos múltiples clics */
+        btnComenzar.disabled = true;
+
+        /* 🎵 Música */
+        iniciarMusica();
+
+        /* 🌑 Iniciamos la experiencia */
+        document.body.classList.add(
+            "experiencia-iniciada"
+        );
+
+        /* 🌅 Ocultar introducción */
+        const introduccion =
+            document.querySelector(".introduccion");
+
+        if (introduccion) {
+
+            introduccion.style.transition =
+                "opacity 1.5s ease, transform 1.5s ease";
+
+            introduccion.style.opacity = "0";
+
+            introduccion.style.transform =
+                "translateY(-35px)";
+        }
+
+
+        /* ==========================================
+           🌼 ETAPA 1
+           MOSTRAR EL JARDÍN
+        ========================================== */
+
+        setTimeout(function () {
+
+            if (jardin) {
+
+                jardin.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        }, 1200);
+
+
+        /* ==========================================
+           🌱 ETAPA 2
+           HACER CRECER LAS FLORES
+        ========================================== */
+
+        setTimeout(function () {
+
+            activarFlores();
+
+        }, 1800);
+
+
+/* ==========================================
+   ✈️ ETAPA 3
+   INICIAR EL VUELO + VIENTO
+========================================== */
+
+setTimeout(function () {
+
+    const avion =
+        document.querySelector(
+            ".avion-conjunto"
+        );
+
+    if (avion) {
+
+        /* Reiniciamos la animación */
+        avion.style.animation = "none";
+
+        void avion.offsetWidth;
+
+
+        /* ✈️ Iniciamos el vuelo */
+        avion.style.animation =
+            "avionVolando 18s linear 1 forwards";
+
+
+        console.log(
+            "✈️ ¡El avión inició su vuelo!"
+        );
+
+
+        /* ==================================
+           🌬️ ACTIVAR VIENTO
+           unos segundos después del despegue
+        ================================== */
+
+        setTimeout(function () {
+
+            activarViento();
+
+            console.log(
+                "🌬️ ¡El avión provocó viento!"
+            );
+
+        }, 9000);
+
+    }
+
+}, 3500);
+
+
+/* ==========================================
+   💛 ETAPA 4
+   REVELACIÓN CINEMATOGRÁFICA
+========================================== */
+
+setTimeout(function () {
+
+    console.log(
+        "✈️ El avión salió completamente de escena."
+    );
+
+
+    /* ==========================================
+       🌬️ CALMAR EL VIENTO
+    ========================================== */
+
+    const floresCampo =
+        document.querySelectorAll(
+            ".flor-campo"
+        );
+
+    floresCampo.forEach(function (flor) {
+
+        flor.classList.remove("viento");
+
+    });
+
+
+    /* ==========================================
+       ✨ PEQUEÑA PAUSA CINEMATOGRÁFICA
+    ========================================== */
+
+    setTimeout(function () {
+
+if (mensaje) {
+
+    mensaje.classList.add(
+        "mensaje-visible"
+    );
+
+    mensaje.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+        console.log(
+            "💛 Revelando el mensaje..."
+        );
+
+    }, 1800);
+
+
+}, 22500);
+
+    });
+
+}
+
+/* ==========================================
+   4. FLORES
+========================================== */
+
+function activarFlores() {
+
+    const flores =
+        document.querySelectorAll(".flor");
+
+    flores.forEach(function (flor, indice) {
+
+        setTimeout(function () {
+
+            flor.classList.add("flor-activa");
+
+        }, indice * 700);
+
+    });
+
+}
+
+
+/* ==========================================
+   5. ABRIR LA CARTA 💌
+========================================== */
+
+if (btnCarta) {
+
+    btnCarta.addEventListener("click", function () {
+
+        if (!carta) return;
+
+        const estaAbierta =
+            carta.classList.contains("abierta");
+
+
+        /* ==================================
+           💌 ABRIR CARTA
+        ================================== */
+
+        if (!estaAbierta) {
+
+            carta.classList.add("abierta");
+
+            btnCarta.textContent =
+                "Cerrar carta 🌼";
+
+
+            /* ✨ Aparece el contenido después
+               de que se abra el sobre */
+
+            setTimeout(function () {
+
+                const contenidoCarta =
+                    document.querySelector(
+                        ".contenido-carta"
+                    );
+
+                if (contenidoCarta) {
+
+                    contenidoCarta.classList.add(
+                        "contenido-visible"
+                    );
+
+                }
+
+            }, 700);
+
+
+            /* 📜 Llevar suavemente hacia la carta */
+
+            setTimeout(function () {
+
+                carta.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }, 1100);
+
+
+            console.log(
+                "💌 La carta se está abriendo..."
+            );
+
+
+        } else {
+
+            /* ==================================
+               💌 CERRAR CARTA
+            ================================== */
+
+            const contenidoCarta =
+                document.querySelector(
+                    ".contenido-carta"
+                );
+
+            if (contenidoCarta) {
+
+                contenidoCarta.classList.remove(
+                    "contenido-visible"
+                );
+
+            }
+
+
+            setTimeout(function () {
+
+                carta.classList.remove(
+                    "abierta"
+                );
+
+            }, 250);
+
+
+            btnCarta.textContent =
+                "Tengo algo más que decirte 💌";
+
+
+            console.log(
+                "💌 La carta se cerró."
+            );
+
+        }
+
+    });
+
+}
+
+
+/* ==========================================
+   6. MÚSICA
+========================================== */
+
+function iniciarMusica() {
+
+    if (!musica) return;
+
+
+    /*
+        Volumen suave.
+    */
+
+    musica.volume = 0.50;
+
+
+    /*
+        El navegador permite reproducir
+        porque viene después de un clic.
+    */
+
+    musica.play()
+        .then(function () {
+
+            console.log(
+                "🎵 La música comenzó correctamente."
+            );
+
+        })
+        .catch(function (error) {
+
+            console.log(
+                "El navegador bloqueó la reproducción.",
+                error
+            );
+
+        });
+
+}
+
+
+/* ==========================================
+   7. CREAR PARTÍCULAS
+========================================== */
+
+const simbolos = [
+    "✦",
+    "✧",
+    "♡",
+    "✿",
+    "❀",
+    "✨"
+];
+
+
+function crearParticula() {
+
+    if (!contenedorParticulas) return;
+
+
+    /*
+        Creamos un elemento nuevo.
+    */
+
+    const particula =
+        document.createElement("span");
+
+
+    particula.classList.add("particula");
+
+
+    /*
+        Elegimos un símbolo al azar.
+    */
+
+    const simbolo =
+        simbolos[
+            Math.floor(
+                Math.random() * simbolos.length
+            )
+        ];
+
+
+    particula.textContent = simbolo;
+
+
+    /*
+        Posición horizontal aleatoria.
+    */
+
+    particula.style.left =
+        Math.random() * 100 + "%";
+
+
+    /*
+        Tamaño aleatorio.
+    */
+
+    particula.style.fontSize =
+        12 + Math.random() * 18 + "px";
+
+
+    /*
+        Duración aleatoria.
+    */
+
+    particula.style.animationDuration =
+        7 + Math.random() * 8 + "s";
+
+
+    /*
+        Retraso aleatorio.
+    */
+
+    particula.style.animationDelay =
+        Math.random() * 2 + "s";
+
+
+    /*
+        La agregamos al jardín.
+    */
+
+    contenedorParticulas.appendChild(
+        particula
+    );
+
+
+    /*
+        Después de cierto tiempo,
+        eliminamos la partícula.
+    */
+
+    setTimeout(function () {
+
+        particula.remove();
+
+    }, 18000);
+
+}
+
+
+/*
+    Creamos una nueva partícula
+    aproximadamente cada segundo.
+*/
+
+setInterval(crearParticula, 1000);
+
+
+/* ==========================================
+   8. EFECTO AL HACER CLIC
+========================================== */
+
+const simbolosClick = [
+    "✦",
+    "✧",
+    "♡",
+    "✨"
+];
+
+
+document.addEventListener(
+    "click",
+    function (evento) {
+
+        const efecto =
+            document.createElement("span");
+
+
+        efecto.classList.add(
+            "efecto-click"
+        );
+
+
+        efecto.textContent =
+            simbolosClick[
+                Math.floor(
+                    Math.random() *
+                    simbolosClick.length
+                )
+            ];
+
+
+        efecto.style.left =
+            evento.clientX + "px";
+
+
+        efecto.style.top =
+            evento.clientY + "px";
+
+
+        document.body.appendChild(
+            efecto
+        );
+
+
+        setTimeout(function () {
+
+            efecto.remove();
+
+        }, 900);
+
+    }
+);
+
+
+/* ==========================================
+   9. ANIMACIÓN DE ENTRADA
+========================================== */
+
+window.addEventListener(
+    "load",
+    function () {
+
+        console.log(
+            "🌼 Experiencia Flores Amarillas cargada."
+        );
+
+        console.log(
+            "💛 Preparada para:",
+            nombre
+        );
+
+    }
+);
+
+
+/* ==========================================
+   10. EFECTO DE MOVIMIENTO DEL RATÓN
+========================================== */
+
+document.addEventListener(
+    "mousemove",
+    function (evento) {
+
+        const flores =
+            document.querySelectorAll(".flor");
+
+
+        /*
+            Calculamos la posición
+            del mouse en la pantalla.
+        */
+
+        const movimientoX =
+            (evento.clientX / window.innerWidth - 0.5);
+
+
+        flores.forEach(function (flor, indice) {
+
+            /*
+                Cada flor se mueve un poquito
+                diferente.
+            */
+
+            const intensidad =
+                (indice + 1) * 3;
+
+
+            const movimiento =
+                movimientoX * intensidad;
+
+
+            /*
+                Solo aplicamos el efecto
+                cuando todavía no está activa.
+            */
+
+            if (!flor.classList.contains("flor-activa")) {
+
+                flor.style.marginLeft =
+                    movimiento + "px";
+
+            }
+
+        });
+
+    }
+);
+
+
+/* ==========================================
+   FIN DEL SCRIPT 🌼
+========================================== */
+
+/* ==========================================
+   🌼 CREAR CAMPO DE FLORES
+========================================== */
+
+const campoFlores =
+    document.getElementById("campoFlores");
+
+
+function crearFlorCampo() {
+
+    if (!campoFlores) return;
+
+
+    const flor =
+        document.createElement("div");
+
+
+    flor.classList.add("flor-campo");
+
+
+    /*
+        Posición horizontal aleatoria
+    */
+
+    flor.style.left =
+        Math.random() * 100 + "%";
+
+
+    /*
+        Tamaño aleatorio
+    */
+
+    const tamano =
+        16 + Math.random() * 18;
+
+    flor.style.setProperty(
+        "--tamano",
+        tamano + "px"
+    );
+
+
+    /*
+        Velocidad diferente
+    */
+
+    flor.style.setProperty(
+        "--duracion",
+        (3 + Math.random() * 3) + "s"
+    );
+
+
+    /*
+        Retraso diferente
+    */
+
+    flor.style.setProperty(
+        "--retraso",
+        Math.random() * 3 + "s"
+    );
+
+
+    /*
+        Algunas flores estarán
+        adelante y otras atrás.
+    */
+
+    if (Math.random() > 0.5) {
+
+        flor.classList.add("frente");
+
+    } else {
+
+        flor.classList.add("fondo");
+
+    }
+
+
+    campoFlores.appendChild(flor);
+
+}
+
+
+/*
+   Creamos muchas flores al cargar.
+*/
+
+for (let i = 0; i < 90; i++) {
+
+    crearFlorCampo();
+
+}
+
+/* ==========================================
+   🌬️ VIENTO DEL AVIÓN
+========================================== */
+
+function activarViento() {
+
+    const campo =
+        document.getElementById("campoFlores");
+
+    if (!campo) return;
+
+
+    /* 🌼 Hacemos reaccionar las flores */
+
+    const flores =
+        document.querySelectorAll(".flor-campo");
+
+    flores.forEach(function (flor) {
+
+        flor.classList.remove("viento");
+
+        void flor.offsetWidth;
+
+        flor.classList.add("viento");
+
+    });
+
+
+    /* 💨 Creamos pequeñas corrientes */
+
+    for (let i = 0; i < 7; i++) {
+
+        const viento =
+            document.createElement("span");
+
+        viento.classList.add("viento-avion");
+
+        viento.style.left =
+            (25 + Math.random() * 50) + "%";
+
+        viento.style.top =
+            (20 + Math.random() * 45) + "%";
+
+        campo.appendChild(viento);
+
+
+        setTimeout(function () {
+
+            viento.classList.add("activo");
+
+        }, i * 120);
+
+
+        setTimeout(function () {
+
+            viento.remove();
+
+        }, 1800 + i * 120);
+
+    }
+
+
+    /* ✨ Partículas doradas */
+
+    for (let i = 0; i < 18; i++) {
+
+        const particula =
+            document.createElement("span");
+
+        particula.classList.add(
+            "particula-dorada"
+        );
+
+        particula.style.left =
+            (35 + Math.random() * 35) + "%";
+
+        particula.style.top =
+            (20 + Math.random() * 55) + "%";
+
+        particula.style.animationDelay =
+            (Math.random() * 0.8) + "s";
+
+        campo.appendChild(particula);
+
+
+        setTimeout(function () {
+
+            particula.remove();
+
+        }, 2500);
+
+    }
+}
