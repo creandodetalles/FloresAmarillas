@@ -110,6 +110,41 @@ if (tituloPersonalizado) {
 
 }
 
+/* ==========================================
+   💌 FRASE DE LA CARTA
+========================================== */
+
+const fraseCarta =
+    document.getElementById(
+        "fraseCarta"
+    );
+
+
+if (fraseCarta) {
+
+    fraseCarta.textContent =
+        frase;
+
+}
+
+
+/* ==========================================
+   ✍️ FIRMA
+========================================== */
+
+const firmaPersonalizada =
+    document.getElementById(
+        "firmaPersonalizada"
+    );
+
+
+if (firmaPersonalizada) {
+
+    firmaPersonalizada.textContent =
+        firma;
+
+}
+
 
 /* ==========================================
    2. ELEMENTOS PRINCIPALES
