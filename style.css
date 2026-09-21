@@ -2595,7 +2595,7 @@ body.experiencia-iniciada .fondo::before {
 
     pointer-events: none;
 
-    z-index: 35;
+    z-index: 99999 !important;
 
     opacity: 0;
 
