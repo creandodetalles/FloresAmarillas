@@ -2577,47 +2577,52 @@ body.experiencia-iniciada .fondo::before {
             scale(1.02);
     }
 
-
-   /* ==========================================
-   🌼🌻 LLUVIA MÁGICA DE FLORES
-   Se activa al pulsar "Comenzar"
-========================================== */
+/* =========================================================
+   🌼🌻 LLUVIA CONTINUA DE FLORES
+   VERSIÓN CINEMATOGRÁFICA FINAL
+========================================================= */
 
 .lluvia-flores {
+
     position: fixed;
+
     inset: 0;
+
     width: 100%;
     height: 100%;
+
     overflow: hidden;
 
     pointer-events: none;
 
-    z-index: 9999;
+    z-index: 35;
 
     opacity: 0;
 
     transition:
-        opacity 0.8s ease;
+        opacity 1s ease;
 }
 
 
-/* ==========================================
-   🌼 CONTENEDOR ACTIVO
-========================================== */
+/* =========================================================
+   🌼 LLUVIA ACTIVADA
+========================================================= */
 
 .lluvia-flores.activa {
+
     opacity: 1;
 }
 
 
-/* ==========================================
-   🌼 CADA FLOR
-========================================== */
+/* =========================================================
+   🌻 CADA FLOR
+========================================================= */
 
 .flor-caida {
+
     position: absolute;
 
-    top: -100px;
+    top: -90px;
 
     left: 0;
 
@@ -2640,11 +2645,12 @@ body.experiencia-iniciada .fondo::before {
 }
 
 
-/* ==========================================
-   🌻 GIRO DE LAS FLORES
-========================================== */
+/* =========================================================
+   🌼 MOVIMIENTO INTERIOR
+========================================================= */
 
 .flor-caida span {
+
     display: block;
 
     animation:
@@ -2656,22 +2662,23 @@ body.experiencia-iniciada .fondo::before {
 }
 
 
-/* ==========================================
-   ✨ BRILLO SUAVE
-========================================== */
+/* =========================================================
+   ✨ ALGUNAS FLORES BRILLAN
+========================================================= */
 
 .flor-caida.brillante {
+
     filter:
         drop-shadow(
-            0 0 7px
-            rgba(255, 213, 79, 0.75)
+            0 0 6px
+            rgba(255, 221, 80, 0.85)
         );
 }
 
 
-/* ==========================================
-   🌼 ANIMACIÓN DE CAÍDA
-========================================== */
+/* =========================================================
+   🌼 CAÍDA NATURAL
+========================================================= */
 
 @keyframes caerFlor {
 
@@ -2689,18 +2696,18 @@ body.experiencia-iniciada .fondo::before {
     }
 
 
-    8% {
+    7% {
 
         opacity: 1;
     }
 
 
-    35% {
+    25% {
 
         transform:
             translate3d(
                 var(--movimiento1),
-                35vh,
+                25vh,
                 0
             )
             rotate(
@@ -2709,12 +2716,12 @@ body.experiencia-iniciada .fondo::before {
     }
 
 
-    65% {
+    50% {
 
         transform:
             translate3d(
                 var(--movimiento2),
-                70vh,
+                50vh,
                 0
             )
             rotate(
@@ -2723,9 +2730,19 @@ body.experiencia-iniciada .fondo::before {
     }
 
 
-    88% {
+    75% {
 
-        opacity: 0.9;
+        transform:
+            translate3d(
+                var(--movimiento3),
+                75vh,
+                0
+            )
+            rotate(
+                var(--rotacion3)
+            );
+
+        opacity: 0.95;
     }
 
 
@@ -2733,12 +2750,12 @@ body.experiencia-iniciada .fondo::before {
 
         transform:
             translate3d(
-                var(--movimiento3),
+                var(--movimiento4),
                 115vh,
                 0
             )
             rotate(
-                var(--rotacion3)
+                var(--rotacion4)
             );
 
         opacity: 0;
@@ -2746,53 +2763,55 @@ body.experiencia-iniciada .fondo::before {
 }
 
 
-/* ==========================================
-   🌻 GIRO ORGÁNICO
-========================================== */
+/* =========================================================
+   🌻 GIRO SUAVE
+========================================================= */
 
 @keyframes girarFlor {
 
     0% {
 
         transform:
-            rotate(-18deg)
-            scale(0.92);
+            rotate(-20deg)
+            scale(0.90);
     }
 
 
     50% {
 
         transform:
-            rotate(12deg)
-            scale(1.06);
+            rotate(15deg)
+            scale(1.08);
     }
 
 
     100% {
 
         transform:
-            rotate(-8deg)
+            rotate(-10deg)
             scale(0.96);
     }
 }
 
 
-/* ==========================================
-   📱 MÓVILES
-========================================== */
+/* =========================================================
+   📱 TELÉFONOS
+========================================================= */
 
 @media (max-width: 700px) {
 
+    .lluvia-flores {
+
+        z-index: 35;
+    }
+
+
     .flor-caida {
+
         font-size:
             calc(
-                var(--tamano) * 0.82
+                var(--tamano)
+                * 0.78
             );
-    }
-}
-   
-
-    .carta .firma span {
-        font-size: 29px;
     }
 }
