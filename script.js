@@ -994,3 +994,578 @@ function activarViento() {
 
     }
 }
+
+/* ==========================================
+   🌼🌻 LLUVIA MÁGICA DE FLORES
+   Se activa al pulsar COMENZAR
+========================================== */
+
+(function () {
+
+    const botonComenzar =
+        document.getElementById(
+            "btnComenzar"
+        );
+
+
+    if (!botonComenzar) {
+        return;
+    }
+
+
+    let lluviaIniciada = false;
+
+
+    /* ======================================
+       🌼 CREAR LLUVIA
+    ====================================== */
+
+    function iniciarLluviaFlores() {
+
+        if (lluviaIniciada) {
+            return;
+        }
+
+
+        lluviaIniciada = true;
+
+
+        /* ==================================
+           🌼 CONTENEDOR
+        ================================== */
+
+        const lluvia =
+            document.createElement(
+                "div"
+            );
+
+
+        lluvia.className =
+            "lluvia-flores";
+
+
+        document.body.appendChild(
+            lluvia
+        );
+
+
+        /* ==================================
+           🌼 TIPOS DE FLORES
+        ================================== */
+
+        const flores = [
+
+            "🌼",
+            "🌻",
+            "🌼",
+            "🌻",
+            "🌼",
+            "🌻",
+            "🌼",
+            "🌼",
+            "🌻",
+            "🌼",
+            "🌻",
+            "🌼"
+
+        ];
+
+
+        /* ==================================
+           🌼 CANTIDAD
+        ================================== */
+
+        const cantidad = 65;
+
+
+        for (
+            let i = 0;
+            i < cantidad;
+            i++
+        ) {
+
+
+            const flor =
+                document.createElement(
+                    "div"
+                );
+
+
+            const simbolo =
+                document.createElement(
+                    "span"
+                );
+
+
+            /* ==============================
+               🌻 FLOR ALEATORIA
+            ============================== */
+
+            simbolo.textContent =
+                flores[
+                    Math.floor(
+                        Math.random() *
+                        flores.length
+                    )
+                ];
+
+
+            flor.appendChild(
+                simbolo
+            );
+
+
+            flor.className =
+                "flor-caida";
+
+
+            /* ==============================
+               📍 POSICIÓN
+            ============================== */
+
+            flor.style.left =
+                (
+                    Math.random() *
+                    100
+                ) + "%";
+
+
+            /* ==============================
+               🌼 TAMAÑO
+            ============================== */
+
+            const tamano =
+                Math.floor(
+                    Math.random() *
+                    20
+                ) + 18;
+
+
+            flor.style.fontSize =
+                tamano + "px";
+
+
+            flor.style.setProperty(
+                "--tamano",
+                tamano + "px"
+            );
+
+
+            /* ==============================
+               ⏱️ DURACIÓN
+            ============================== */
+
+            const duracion =
+                (
+                    Math.random() *
+                    4
+                ) + 5;
+
+
+            flor.style.setProperty(
+                "--duracion",
+                duracion + "s"
+            );
+
+
+            /* ==============================
+               ⏳ RETRASO
+            ============================== */
+
+            const retraso =
+                Math.random() * 4;
+
+
+            flor.style.setProperty(
+                "--retraso",
+                retraso + "s"
+            );
+
+
+            /* ==============================
+               🍃 MOVIMIENTO HORIZONTAL
+            ============================== */
+
+            const movimiento1 =
+                (
+                    Math.random() *
+                    180
+                ) - 90;
+
+
+            const movimiento2 =
+                (
+                    Math.random() *
+                    280
+                ) - 140;
+
+
+            const movimiento3 =
+                (
+                    Math.random() *
+                    360
+                ) - 180;
+
+
+            flor.style.setProperty(
+                "--movimiento1",
+                movimiento1 + "px"
+            );
+
+
+            flor.style.setProperty(
+                "--movimiento2",
+                movimiento2 + "px"
+            );
+
+
+            flor.style.setProperty(
+                "--movimiento3",
+                movimiento3 + "px"
+            );
+
+
+            /* ==============================
+               🔄 ROTACIÓN
+            ============================== */
+
+            const rotacion1 =
+                (
+                    Math.random() *
+                    360
+                ) - 180;
+
+
+            const rotacion2 =
+                (
+                    Math.random() *
+                    720
+                ) - 360;
+
+
+            const rotacion3 =
+                (
+                    Math.random() *
+                    1080
+                ) - 540;
+
+
+            flor.style.setProperty(
+                "--rotacion1",
+                rotacion1 + "deg"
+            );
+
+
+            flor.style.setProperty(
+                "--rotacion2",
+                rotacion2 + "deg"
+            );
+
+
+            flor.style.setProperty(
+                "--rotacion3",
+                rotacion3 + "deg"
+            );
+
+
+            /* ==============================
+               💫 GIRO
+            ============================== */
+
+            const giro =
+                (
+                    Math.random() *
+                    2
+                ) + 1.5;
+
+
+            flor.style.setProperty(
+                "--giro",
+                giro + "s"
+            );
+
+
+            /* ==============================
+               ✨ ALGUNAS BRILLAN
+            ============================== */
+
+            if (
+                Math.random() <
+                0.25
+            ) {
+
+                flor.classList.add(
+                    "brillante"
+                );
+
+            }
+
+
+            lluvia.appendChild(
+                flor
+            );
+
+        }
+
+
+        /* ==================================
+           ✨ ACTIVAR
+        ================================== */
+
+        requestAnimationFrame(
+            function () {
+
+                lluvia.classList.add(
+                    "activa"
+                );
+
+            }
+        );
+
+
+        /* ==================================
+           🌼 SEGUNDA OLEADA
+        ================================== */
+
+        setTimeout(
+            function () {
+
+                crearSegundaOleada(
+                    lluvia
+                );
+
+            },
+            2600
+        );
+
+
+        /* ==================================
+           🌼 LIMPIAR DESPUÉS
+        ================================== */
+
+        setTimeout(
+            function () {
+
+                lluvia.style.opacity =
+                    "0";
+
+
+                setTimeout(
+                    function () {
+
+                        lluvia.remove();
+
+                    },
+                    1000
+                );
+
+            },
+            12500
+        );
+
+    }
+
+
+    /* ======================================
+       🌻 SEGUNDA OLEADA
+    ====================================== */
+
+    function crearSegundaOleada(
+        lluvia
+    ) {
+
+
+        const floresSegunda =
+            [
+                "🌼",
+                "🌻",
+                "🌼",
+                "🌻",
+                "🌼"
+            ];
+
+
+        for (
+            let i = 0;
+            i < 25;
+            i++
+        ) {
+
+
+            const flor =
+                document.createElement(
+                    "div"
+                );
+
+
+            const simbolo =
+                document.createElement(
+                    "span"
+                );
+
+
+            simbolo.textContent =
+                floresSegunda[
+                    Math.floor(
+                        Math.random() *
+                        floresSegunda.length
+                    )
+                ];
+
+
+            flor.appendChild(
+                simbolo
+            );
+
+
+            flor.className =
+                "flor-caida";
+
+
+            flor.style.left =
+                (
+                    Math.random() *
+                    100
+                ) + "%";
+
+
+            const tamano =
+                Math.floor(
+                    Math.random() *
+                    17
+                ) + 16;
+
+
+            flor.style.fontSize =
+                tamano + "px";
+
+
+            flor.style.setProperty(
+                "--tamano",
+                tamano + "px"
+            );
+
+
+            const duracion =
+                (
+                    Math.random() *
+                    3
+                ) + 5;
+
+
+            flor.style.setProperty(
+                "--duracion",
+                duracion + "s"
+            );
+
+
+            flor.style.setProperty(
+                "--retraso",
+                "0s"
+            );
+
+
+            flor.style.setProperty(
+                "--movimiento1",
+                (
+                    Math.random() *
+                    160 -
+                    80
+                ) + "px"
+            );
+
+
+            flor.style.setProperty(
+                "--movimiento2",
+                (
+                    Math.random() *
+                    260 -
+                    130
+                ) + "px"
+            );
+
+
+            flor.style.setProperty(
+                "--movimiento3",
+                (
+                    Math.random() *
+                    340 -
+                    170
+                ) + "px"
+            );
+
+
+            flor.style.setProperty(
+                "--rotacion1",
+                (
+                    Math.random() *
+                    360 -
+                    180
+                ) + "deg"
+            );
+
+
+            flor.style.setProperty(
+                "--rotacion2",
+                (
+                    Math.random() *
+                    720 -
+                    360
+                ) + "deg"
+            );
+
+
+            flor.style.setProperty(
+                "--rotacion3",
+                (
+                    Math.random() *
+                    1080 -
+                    540
+                ) + "deg"
+            );
+
+
+            flor.style.setProperty(
+                "--giro",
+                (
+                    Math.random() * 2 + 1.5
+                ) + "s"
+            );
+
+
+            if (
+                Math.random() <
+                0.35
+            ) {
+
+                flor.classList.add(
+                    "brillante"
+                );
+
+            }
+
+
+            lluvia.appendChild(
+                flor
+            );
+
+        }
+
+    }
+
+
+    /* ======================================
+       🖱️ ACTIVAR AL PULSAR COMENZAR
+    ====================================== */
+
+    botonComenzar.addEventListener(
+        "click",
+        function () {
+
+            iniciarLluviaFlores();
+
+        }
+    );
+
+
+})();
