@@ -1399,54 +1399,52 @@ function activarViento() {
             );
 
 
-        /* ===============================================
-           🌼 DURACIÓN TOTAL
-           22 SEGUNDOS
-        =============================================== */
+        /* =====================================================
+   🌼 DURACIÓN TOTAL
+   VERSIÓN LARGA
+===================================================== */
+
+setTimeout(
+    function () {
+
+        clearInterval(
+            intervaloFlores
+        );
+
+
+        intervaloFlores =
+            null;
+
+
+        /* =======================================
+           🌼 DEJAR QUE LAS ÚLTIMAS FLORES
+           TERMINEN SU RECORRIDO
+        ======================================= */
 
         setTimeout(
             function () {
 
-                clearInterval(
-                    intervaloFlores
-                );
+                lluvia.style.opacity =
+                    "0";
 
-
-                intervaloFlores =
-                    null;
-
-
-                /* =======================================
-                   ✨ DESAPARICIÓN SUAVE
-                ======================================= */
 
                 setTimeout(
                     function () {
 
-                        lluvia.style.opacity =
-                            "0";
-
-
-                        setTimeout(
-                            function () {
-
-                                lluvia.remove();
-
-                            },
-                            1500
-                        );
+                        lluvia.remove();
 
                     },
-                    7000
+                    1800
                 );
 
-
             },
-            15000
+            9000
         );
 
-    }
 
+    },
+    30000
+);
 
     /* =====================================================
        🖱️ COMENZAR
