@@ -2577,6 +2577,221 @@ body.experiencia-iniciada .fondo::before {
             scale(1.02);
     }
 
+
+   /* ==========================================
+   🌼🌻 LLUVIA MÁGICA DE FLORES
+   Se activa al pulsar "Comenzar"
+========================================== */
+
+.lluvia-flores {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.8s ease;
+}
+
+
+/* ==========================================
+   🌼 CONTENEDOR ACTIVO
+========================================== */
+
+.lluvia-flores.activa {
+    opacity: 1;
+}
+
+
+/* ==========================================
+   🌼 CADA FLOR
+========================================== */
+
+.flor-caida {
+    position: absolute;
+
+    top: -100px;
+
+    left: 0;
+
+    display: block;
+
+    line-height: 1;
+
+    user-select: none;
+
+    will-change:
+        transform,
+        opacity;
+
+    animation:
+        caerFlor
+        var(--duracion)
+        linear
+        var(--retraso)
+        forwards;
+}
+
+
+/* ==========================================
+   🌻 GIRO DE LAS FLORES
+========================================== */
+
+.flor-caida span {
+    display: block;
+
+    animation:
+        girarFlor
+        var(--giro)
+        ease-in-out
+        var(--retraso)
+        infinite alternate;
+}
+
+
+/* ==========================================
+   ✨ BRILLO SUAVE
+========================================== */
+
+.flor-caida.brillante {
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(255, 213, 79, 0.75)
+        );
+}
+
+
+/* ==========================================
+   🌼 ANIMACIÓN DE CAÍDA
+========================================== */
+
+@keyframes caerFlor {
+
+    0% {
+
+        transform:
+            translate3d(
+                0,
+                -12vh,
+                0
+            )
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+
+    8% {
+
+        opacity: 1;
+    }
+
+
+    35% {
+
+        transform:
+            translate3d(
+                var(--movimiento1),
+                35vh,
+                0
+            )
+            rotate(
+                var(--rotacion1)
+            );
+    }
+
+
+    65% {
+
+        transform:
+            translate3d(
+                var(--movimiento2),
+                70vh,
+                0
+            )
+            rotate(
+                var(--rotacion2)
+            );
+    }
+
+
+    88% {
+
+        opacity: 0.9;
+    }
+
+
+    100% {
+
+        transform:
+            translate3d(
+                var(--movimiento3),
+                115vh,
+                0
+            )
+            rotate(
+                var(--rotacion3)
+            );
+
+        opacity: 0;
+    }
+}
+
+
+/* ==========================================
+   🌻 GIRO ORGÁNICO
+========================================== */
+
+@keyframes girarFlor {
+
+    0% {
+
+        transform:
+            rotate(-18deg)
+            scale(0.92);
+    }
+
+
+    50% {
+
+        transform:
+            rotate(12deg)
+            scale(1.06);
+    }
+
+
+    100% {
+
+        transform:
+            rotate(-8deg)
+            scale(0.96);
+    }
+}
+
+
+/* ==========================================
+   📱 MÓVILES
+========================================== */
+
+@media (max-width: 700px) {
+
+    .flor-caida {
+        font-size:
+            calc(
+                var(--tamano) * 0.82
+            );
+    }
+}
+   
+
     .carta .firma span {
         font-size: 29px;
     }
